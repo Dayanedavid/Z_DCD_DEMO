@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TDCD_AUTO unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TDCD_AUTO alias ZrTdcdAuto
+persistent table ZTDCD_AUTO
+draft table ZTDCD_AUTO_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( readonly )
+   Orderid,
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( numbering : managed )
+   Orderid;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTDCD_AUTO
+  {
+    Orderid = orderid;
+    Customer = customer;
+    Vendor = vendor;
+    Company = company;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TDCD_AUTO'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TDCD_AUTO'
+  }
+}
+define service ZUI_TDCD_AUTO_O4 provider contracts odata_v4_ui {
+  expose ZC_TDCD_AUTO;
+}
